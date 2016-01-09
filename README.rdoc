@@ -36,3 +36,26 @@ Please feel free to use a different markup language if you do not plan to run
 +++++++++++++++++++++++++++++++++++++
 **To deal with model back form(the form that have a model) rails provides form_for method. 
 
+#render plain: params[:article].inspect
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++
+01. first in the gemfile, include the following lines
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
+02. then run bundle install
+03. Create a assets/stylessheets/custom.css.scss
+04. Add the following line at the top of this file
+@import "bootstrap-sprockets";
+@import "bootstrap";
+05. In the assets/javascripts/application.js
+include the following line 
+//= require bootstrap-sprockets
+like as follows:
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
+
+
