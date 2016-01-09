@@ -30,4 +30,9 @@ Please feel free to use a different markup language if you do not plan to run
 ======================================================
 *** To reload the console
 => reload!
+=> article = Article.create()
+=> article.errors.any?
+=> article.errors.full_messages
++++++++++++++++++++++++++++++++++++++
+**To deal with model back form(the form that have a model) rails provides form_for method. 
 
