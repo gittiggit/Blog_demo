@@ -67,3 +67,4 @@ like as follows:
 ** Add the design for the footer in the custom css and follow the drive docs
 
 =================================================================
+** Now style the form:
