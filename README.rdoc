@@ -68,3 +68,8 @@ like as follows:
 
 =================================================================
 ** Now style the form:
+** Style the errors partial
+** Style the messages partial
+** Style the show page of the article
+================================================================
+
