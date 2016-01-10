@@ -38,7 +38,9 @@ Please feel free to use a different markup language if you do not plan to run
 
 #render plain: params[:article].inspect
 
+
 +++++++++++++++++++++++++++++++++++++++++++++++++++
+** Perform the Article crud 
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 01. first in the gemfile, include the following lines
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -58,4 +60,10 @@ like as follows:
 //= require turbolinks
 //= require_tree .
 
+++++++++++++++++++++++++++++++++++++++++++++++++
+** Add the _navigation.html.erb
+** Design the home page
+** Add the _footer.html.erb
+** Add the design for the footer in the custom css and follow the drive docs
 
+=================================================================
