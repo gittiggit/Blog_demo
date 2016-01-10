@@ -1,21 +1,20 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
-
-<%= link_to "Create a new article", new_article_path %>
-<table>
-	<tr>
-		<th>Title</th>
-		<th>Description</th>
-	</tr>
-    <% @articles.each do |ar| %>
-		<tr>
-		    <td><%= link_to ar.title, ar %></td>
-		    <td><%= ar.description %></td>
-		    <td><%= link_to "Edit", edit_article_path(ar) %></td>
-		    <td><%= link_to "Delete", ar, method: :delete, data:{confirm: "Are you sure"} %></td>
-		</tr>
+<h1 align="center">Listing all articles</h1>
+<% @articles.each do |ar| %>
+	<div class="row">
+	  <div class="col-xs-8 col-xs-offset-2">
+		<div class="well well-lg">
+		  <div class="article-title">
+			<%= link_to ar.title, ar %>
+		  </div>
+		  <div class="article-body">
+			<%= truncate(ar.description, length: 500) %>
+		  </div>
+		  <div class="article-actions">
+			<%= link_to "Edit", edit_article_path(ar), class: "btn btn-xs btn-primary" %> |
+			<%= link_to "Delete", ar, method: :delete, data:{confirm:"Are you sure to delete"},
+						class: "btn btn-xs btn-danger" %>
+		  </div>
+		</div>
+	  </div>
+	</div>
     <% end %>
-</table>
-<p>
-	<%= link_to "List all article", articles_path %>
-</p>
