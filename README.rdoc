@@ -162,5 +162,39 @@ Step 19 : Add the gravatar for the user(follow the drive docs) in the users/show
 ==============================================================================================
 Step 20 : index all the user and inthe article show, add the gravator of the article creator and his number of article
 
+=========================================
 
+Step 21: Adding pagination
+    a. install the gem
+    gem "will_paginate", "3.0.7"
+    gem "bootstrap-will_paginate", "0.0.10"
+
+    b. In the users controllers index action
+    def index
+    		@users = User.paginate(page: params[:page], per_page: 2)
+      end
+
+    c. In the users/index.html.erb
+      <div align="center">
+        <%= will_paginate %>
+      </div>
+
+    d. To paginate all the articles of a user in the users/show page, first you have to grav all the articles
+      associate with a user in the users controler's show action and then use it in the users show view like as follows
+      in the users' controller
+      def show
+      		@user = User.find params[:id]
+      		@user_articles = @user.articles.paginate(page: params[:page], per_page: 2)
+      end
+
+      In the users/show
+        <div align="center">
+          <%= will_paginate @user_articles %>
+        </div>
+          <%= render "articles/article", obj: @user_articles %>
+        <div align="center">
+          <%= will_paginate @user_articles %>
+        </div>
+
+========================================================================
 
