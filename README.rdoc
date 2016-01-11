@@ -73,5 +73,9 @@ like as follows:
 ** Style the show page of the article
 ** Style the index page
 ================================================================
+Step 13: Create user
+rails g model create User username:string email:string
+user = User.find(2)
 
+====================================================================
 
