@@ -120,5 +120,11 @@ Step 16: Add a debugger to the application.html.er
 
 =======================================================================================
 
-Step 17:
-
+Step 17: using hs_secure_password
+  a. install the gem "gem 'bcrypt', '~> 3.1.7'"
+  b. add this in the user.rb "has_secure_password"
+  c. generate a migration to add the password_digest column to the users tabls
+     rails g migration add_password_digest_to_users password_digest:string     and the rake db:migrate
+  d.  u = User.last
+  u.authenticate("password")
+  Here authenticate method returns the u if password is matched else return false
