@@ -85,4 +85,40 @@ Step 14: Validates for user model:
  -validate email format using regex
 ===================================================================
 
+Step 15: generate migration to add user_id column to article
+rails g migration add_user_id_to_articles user_id:integer
+rake db:migrate
+
+==================================================================
+** Article belongs to a user and a user has many articles
+
+u = User.create(username: "Mahmud", email:"m@gmail.com")
+ar = Article.create(title:"A title", description:"Some description", user: u)
+ar1 = Article.create(title:"A title", description:"Some description", user: u)
+ar2 = Article.create(title:"A title", description:"Some description", user: u)
+
+Now if I run the command
+u.articles  (because a user may have many articles)
+It will give me all the articles belongs to a user u. But if I want to get the user that has the article ar, I have to run the command
+ar.user  (not ar.users because an article belong to a user)
+
+Now you want to know about the username who have the article ar1, you have to run the command
+ar1.user.username or to get the email (not users)
+ar1.user.email (not users)
+
+Now think differently. You need to have all the article's title that belong to a user u. To do this first you have to get all the
+articles(as a collection) associated with a user by this command u.articles and then run a loop through them to extract the title
+like as follows
+u.articles.each do |ar|
+    ar.title
+end
+
+=====================================================================================
+Step 16: Add a debugger to the application.html.er
+
+<%= debug(params) if Rails.env.development? %>
+
+=======================================================================================
+
+Step 17:
 
