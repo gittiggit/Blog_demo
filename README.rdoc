@@ -79,3 +79,10 @@ user = User.find(2)
 
 ====================================================================
 
+Step 14: Validates for user model:
+ -user name must be present
+ -email must be present and unique
+ -validate email format using regex
+===================================================================
+
+
