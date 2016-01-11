@@ -154,4 +154,10 @@ Step 18: edit user, create _form.html.erb partial for edit and new
             </div>
          </div>
 
+================================================================================
+Step 19 : Add the gravatar for the user(follow the drive docs) in the users/show.html.erb
+          show all the articles associated with a user. Here I used used the articles/article partial for this purpose
+          by passing the object to this partial
+
+
 

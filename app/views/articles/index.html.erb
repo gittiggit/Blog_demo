@@ -1,26 +1,3 @@
 <h1 align="center">Listing all articles</h1>
-<% @articles.each do |ar| %>
-	<div class="row">
-	  <div class="col-xs-8 col-xs-offset-2">
-		<div class="well well-lg">
-		  <div class="article-title">
-			<%= link_to ar.title, ar %>
-		  </div>
-		  <div class="article-body">
-			<%= truncate(ar.description, length: 500) %>
-			<div class="article-meta-details">
-			  <small>
-				Created by: <%= ar.user.username if ar.user %>&nbsp;<%= time_ago_in_words(ar.created_at) %>, ago.
-				Last updated at <%= time_ago_in_words(ar.updated_at) %>, ago
-			  </small>
-			</div>
-			</div>
-		  <div class="article-actions">
-			<%= link_to "Edit", edit_article_path(ar), class: "btn btn-xs btn-primary" %> |
-			<%= link_to "Delete", ar, method: :delete, data:{confirm:"Are you sure to delete"},
-						class: "btn btn-xs btn-danger" %>
-		  </div>
-		</div>
-	  </div>
-	</div>
-    <% end %>
+
+<%= render "article", obj: @articles %>
