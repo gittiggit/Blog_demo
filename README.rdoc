@@ -128,3 +128,20 @@ Step 17: using hs_secure_password
   d.  u = User.last
   u.authenticate("password")
   Here authenticate method returns the u if password is matched else return false
+
+==================================================================================
+Step 17: named route for user signup: in the routes.rb
+get "signup", to: "users#new"
+
+Add the users controller
+rails g controller Users index new edit show
+
+** To handle the post request or form submission for create user, in the routes.rb
+ post "users", to: "users#create"
+ or
+ resources :users
+ *** Observe the code,
+ 	resources :users, except:[:new] # because there is a named route for the user/new
+ 	get "signup", to: "users#new"
+
+ ***
