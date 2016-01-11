@@ -262,4 +262,47 @@ Step 23: Session create and destroy using sessions controller Here observe the c
  	 <li><%= link_to "Delete", article_path, method: :delete %></li>
  ===================================================================================================
 
+Step 24: Let's know something. The methods we create in our application controller are available to all of our controller. But thery are not
+         available to our views by-default. If we want to use them in our views, then we have to tell the rails that, these are helper methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+"hello"   #-> this is a string; it is not in a boolean context
+!"hello"  #-> this is a string that is forced into a boolean
+          #   context (true), and then negated (false)
+!!"hello" #-> this is a string that is forced into a boolean
+          #   context (true), and then negated (false), and then
+          #   negated again (true)
+!!nil     #-> this is a false-y value that is forced into a boolean
+          #   context (false), and then negated (true), and then
+          #   negated again (false)
+In your example, the signed_in? method should return a boolean value (as indicated by convention by the ? character).
+The internal logic it uses to decide this value is by checking to see if the current_user variable is set. If it is set,
+it will evaluate to true in a boolean context. If not, it will evaluate as false. The double negation forces the return
+value to be a boolean.
+
 
