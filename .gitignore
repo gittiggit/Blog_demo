@@ -14,12 +14,11 @@ capybara-*.html
 /spec/tmp/*
 **.orig
 rerun.txt
-/db/*.sqlite3
 pickle-email-*.html
 .project
-/config/database.yml
 /public/uploads
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 /.idea
+/db/*.sqlite3
