@@ -434,3 +434,21 @@ Step 30: Working with categori in the view, in the navigation.......
 
 =============================================================================================
 
+Step 31: Creating association between article and the category(many-to-many)
+
+        a. Create a new table article_categories
+        b. rails g model ArticleCategory article:references category:references
+        c.Lets have some many-to-many association operation
+         ar = Article.last
+         ca = Category.last
+         ca.articles (will return an empty relation)
+         ca.articles << ar (Will insert in the join table=> article_categories)
+         ar1 = Article.first
+         ca.articles << ar1 (Will insert in the join table=> article_categories)
+         ca.articles (will return 2 article )
+         ca.article.size (Will return 2)
+         In the same way we can do for an article like as follows
+         ar1.categories << ca1
+         ar1.categories
+**** And to use(ar1.categories) this collection, we have to loop through it.
+
