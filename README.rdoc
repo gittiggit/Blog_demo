@@ -381,3 +381,21 @@ Step 27: Adding admin functionality
 
 
 
+Step 28: Admin user to delete a user and when a user is deleted, all of it's article should be deleted
+         To do that in the user.rb,
+         has_many :articles, dependent: :destroy
+         In the users controller
+         before_action :require_admin, only: [:destroy]
+         private
+         def require_admin
+           if logged_in and !current_user.admin?
+             flash[:danger] = "Only admin user can perform this action"
+             redirect_to root_path
+           end
+         end
+         In the users index
+         <% if logged_in? and current_user.admin? %>
+            <li><%= link_to "Delete this user", user_path(user), method: :delete,
+                    data: {confirm: "Are you sure to delete"} %>
+            </li>
+         <% end %>
