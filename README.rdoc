@@ -270,6 +270,14 @@ Step 24: Let's know something. The methods we create in our application controll
 Step 25: Changing navigation, signup path in the hone, home action, restricting actions(edit, and delete) of the articles index page to
          the article's owner.
 
+         <% if logged_in? && current_user == article.user %>
+            <div class="article-actions">
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %> |
+              <%= link_to "Delete", article, method: :delete, data:{confirm:"Are you sure to delete"},
+                          class: "btn btn-xs btn-danger" %>
+            </div>
+          <% end %>
+
 ------------------------------------------------------------------------
 "hello"   #-> this is a string; it is not in a boolean context
 !"hello"  #-> this is a string that is forced into a boolean
@@ -284,5 +292,63 @@ In your example, the signed_in? method should return a boolean value (as indicat
 The internal logic it uses to decide this value is by checking to see if the current_user variable is set. If it is set,
 it will evaluate to true in a boolean context. If not, it will evaluate as false. The double negation forces the return
 value to be a boolean.
+
+
+=======================================================================================
+
+Step 26 : Restricting actions to logged_in users
+          Though we restricted the view link, we can still access the resource through url: linkhttp://localhost:3000/articles/2/edit,
+          To pervent this in the article's controller, call the require_user method from the application controller through the
+          before_action filter
+
+          before_action :require_user, except: [:index, :show]
+
+          def require_user
+            if !logged_in?
+              flash[:danger] = "You must be logged in to perform that action"
+              redirect_to root_path
+            end
+          end
+
+          After doing that, if I logged_in, I can still edit another users resources through the url like as
+            http://localhost:3000/articles/2/edit
+            http://localhost:3000/articles/3/edit
+          To prevent this, in the article controller
+          before_action :require_same_user, except: [:edit, :update, :destroy]
+
+          and
+
+          private
+          def require_same_user
+            if current_user != @article.user
+              flash[:notice] = "You can only edit/delete your own article"
+              redirect_to root_path
+            end
+          end
+** for the users controller
+          before_action :require_same_user, only: [:edit, :update]
+          def require_same_user
+            if current_user != @user
+              flash[:danger] = "You can only edit your own account"
+              redirect_to root_path
+            end
+          end
+
+** Creating article for the current_user
+          def create
+              #render plain: params[:article].inspect
+              @article = Article.new article_params
+              @article.user = current_user
+              if @article.save
+                flash[:success] = "Added successfully"
+                redirect_to article_path(@article)
+              else
+                render :new
+              end
+          end
+===============================================================================================
+
+
+
 
 
