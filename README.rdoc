@@ -265,6 +265,11 @@ Step 23: Session create and destroy using sessions controller Here observe the c
 Step 24: Let's know something. The methods we create in our application controller are available to all of our controller. But thery are not
          available to our views by-default. If we want to use them in our views, then we have to tell the rails that, these are helper methods.
 
+===========================================================================
+
+Step 25: Changing navigation, signup path in the hone, home action, restricting actions(edit, and delete) of the articles index page to
+         the article's owner.
+
 
 
 
