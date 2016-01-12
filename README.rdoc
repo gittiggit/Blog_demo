@@ -363,6 +363,21 @@ Step 26: When a user first signed up, take him as a logged_in user. We did this 
 
 ==========================================================================================
 
+Step 27: Adding admin functionality
+         a. Add a new column(admin:boolean, default: false) to users table
+         b.We want if an article is not belongs to a user but the user is an admin, then he can edit and update and delete
+         the resource(article), that means to give him access to article controller, change the require_same_user method
+         like as follows
+         def require_same_user
+           if current_user != @article.user and !current_user.admin?
+             flash[:notice] = "You can only edit/delete your own article"
+             redirect_to root_path
+           end
+         end
+
+         To show the edit and delete link to admin, change the codes
+           <% if logged_in? && (current_user == article.user || current_user.admin?) %>
+
 
 
 
