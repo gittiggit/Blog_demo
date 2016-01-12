@@ -399,3 +399,20 @@ Step 28: Admin user to delete a user and when a user is deleted, all of it's art
                     data: {confirm: "Are you sure to delete"} %>
             </li>
          <% end %>
+
+================================================================================================
+
+Step 29: a. Minitest is the rails default testing framework
+         b. unit test for model(tests individual unit of the model, example: validation), functionl and integration test for the controller and views
+         c.
+Step 30: a. Adding category, and it's index, show, new, create, delete, update
+         b. Category show and index will be shown by all but only admin can delete and create
+
+         before_action :require_admin, except: [:index, :show]
+         def require_admin
+           if !logged_in? || (logged_in? and !current_user.admin?)
+             flash[:danger] = "Only admin can perform this action"
+             redirect_to categories_path
+           end
+         end
+
