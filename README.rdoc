@@ -270,31 +270,6 @@ Step 24: Let's know something. The methods we create in our application controll
 Step 25: Changing navigation, signup path in the hone, home action, restricting actions(edit, and delete) of the articles index page to
          the article's owner.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ------------------------------------------------------------------------
 "hello"   #-> this is a string; it is not in a boolean context
 !"hello"  #-> this is a string that is forced into a boolean
