@@ -470,3 +470,14 @@ Add collection checkbox to articles new page
          end
 
 ===================================================================================================
+
+Step 32: Showing the associated categories to the articles's show page
+         a. In the articles/show, under the description
+          <% if @article.categories.any? %>
+             <p>Categories: <%= render @article.categories %></p>
+          <% end %>
+         This will render a partial(_category.html.erb) in the views/category, that is
+         <span class="badge"><%= link_to category.name, category %>&nbsp;</span>
+         Here it will get category from the code block in the show page.
+
+         b.In the same way,show the associated categories to the articles's index page
