@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    binding.pry
     #render plain: params[:article].inspect
     @article = Article.new article_params
     @article.user = current_user
