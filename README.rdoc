@@ -483,3 +483,5 @@ Step 32: Showing the associated categories to the articles's show page
          b.In the same way,show the associated categories to the articles's index page
 
          c. Add number of articles associated with every category index
+
+Step 33: Edit/update category, using categories/_form partial for this
